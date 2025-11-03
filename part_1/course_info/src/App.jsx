@@ -1,18 +1,26 @@
 const App = () => {
   const course = 'Half Stack application development'
-  const part1 = 'Fundamentals of React'
-  const exercises1 = 10
-  const part2 = 'Using props to pass data'
-  const exercises2 = 7
-  const part3 = 'State of a component'
-  const exercises3 = 14
+  const parts = [
+    {
+    name: 'Fundamentals of React',
+    exercises: 10
+    },
+    {
+      name: 'Using props to pass data',
+      exercises: 7
+    },
+    {
+      name: 'State of a component',
+      exercises: 14
+    }
+]
 
   return (
-    <>
+    <div>
       <Header course = {course}/>
-      <Content parts = {[part1, part2, part3]} exercises = {[exercises1, exercises2, exercises3]}/>
-      <Total exer1 = {exercises1} exer2 = {exercises2} exer3 = {exercises3}/>
-    </>
+      <Content parts = {parts}/>
+      <Total parts = {parts}/>
+    </div>
   )
   
 }
@@ -28,11 +36,11 @@ const Header  = (props) => {
 
 const Content = (props) => {
   console.log("From Content:", props)
+  const formatted_courses = []
+  props.parts.forEach(part => formatted_courses.push(<Part part_name = {part.name} exer_count = {part.exercises}/>))
   return (
     <div>
-      <Part part_name = {props.parts[0]} exer_count = {props.exercises[0]}/>
-      <Part part_name = {props.parts[1]} exer_count = {props.exercises[1]}/>
-      <Part part_name = {props.parts[2]} exer_count = {props.exercises[2]}/>
+    { formatted_courses }
     </div>
   )
 }
@@ -48,9 +56,10 @@ const Part = (props) => {
 
 const Total = (props) => {
   console.log("From Total:", props)
+  let total = 0
   return (
     <p>
-      Number of exercises {props.exer1 + props.exer2 + props.exer3}
+      Number of exercises {props.parts.forEach(part => total = total + part.exercises)}
     </p>
   )
 }
