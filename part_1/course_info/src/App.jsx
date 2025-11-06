@@ -68,5 +68,56 @@ const Total = (props) => {
   )
 }
 
-
 export default App
+
+
+// // App from the text
+// import { useState } from 'react'
+
+
+// const App = () => {
+//   const [left, setLeft] = useState(0)
+//   const [right, setRight] = useState(0)
+//   const [allClicks, setAll] = useState([])
+//   const [total, setTotal] = useState(0)
+
+//   const handleLeftClick = () => {
+//     setLeft(left + 1)
+//     setAll(allClicks.concat("L"))
+//     setTotal(total + 1)
+//   }
+
+//   const handleRightClick = () => {
+//     setRight(right + 1)
+//     setAll(allClicks.concat("R"))
+//     setTotal(total + 1)
+//   }
+
+//   return (
+//     <div>
+//       {left}
+//       <Button onClick={handleLeftClick} title="left"/>
+//       <Button onClick={handleRightClick} title="right"/>
+//       {right}
+//       <History allClicks={allClicks}/>
+//     </div>
+//   )
+// }
+
+// const Display = ({counter}) => <div>{counter}</div>
+// const Button = ({onClick, title}) => <button onClick={onClick}>{ title }</button>
+
+// const History = ({allClicks}) => {
+//   if (allClicks.length == 0) {
+//     return (
+//       <div>
+//         the app is used by pressing buttons
+//       </div>
+//     )
+//   }
+//   return (
+//     <div>button press history: {allClicks.join(' ')}</div>
+//   )
+// }
+
+// export default App
